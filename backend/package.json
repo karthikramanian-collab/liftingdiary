@@ -1,0 +1,27 @@
+{
+  "name": "@liftingdiary/backend",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./src/db/index.ts",
+  "exports": {
+    ".": "./src/db/index.ts",
+    "./schema": "./src/db/schema.ts"
+  },
+  "scripts": {
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.45.2",
+    "postgres": "^3.4.9"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "dotenv": "^17.4.2",
+    "drizzle-kit": "^0.31.10",
+    "tsx": "^4.21.0",
+    "typescript": "^5"
+  }
+}

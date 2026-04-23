@@ -17,12 +17,12 @@ const btnBase: React.CSSProperties = {
 export function HeroCTAs() {
   return (
     <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-      <SignUpButton mode="modal">
+      <SignUpButton mode="modal" forceRedirectUrl="/dashboard">
         <button style={{ ...btnBase, background: 'var(--accent)', color: '#fff' }}>
           Start Logging Free
         </button>
       </SignUpButton>
-      <SignInButton mode="modal">
+      <SignInButton mode="modal" forceRedirectUrl="/dashboard">
         <button
           style={{
             ...btnBase,
@@ -41,7 +41,7 @@ export function HeroCTAs() {
 
 export function BannerCTA() {
   return (
-    <SignUpButton mode="modal">
+    <SignUpButton mode="modal" forceRedirectUrl="/dashboard">
       <button
         style={{
           ...btnBase,

@@ -13,7 +13,7 @@ export function NavAuth() {
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-      <SignInButton mode="modal">
+      <SignInButton mode="modal" forceRedirectUrl="/dashboard">
         <button
           style={{
             background: 'transparent',
@@ -31,7 +31,7 @@ export function NavAuth() {
           Sign In
         </button>
       </SignInButton>
-      <SignUpButton mode="modal">
+      <SignUpButton mode="modal" forceRedirectUrl="/dashboard">
         <button
           style={{
             background: 'var(--accent)',

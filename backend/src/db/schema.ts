@@ -1,6 +1,7 @@
 import { relations } from 'drizzle-orm';
 import {
   boolean,
+  index,
   integer,
   numeric,
   pgTable,
@@ -18,15 +19,19 @@ export const exercises = pgTable('exercises', {
   createdAt: timestamp('created_at').notNull().defaultNow(),
 });
 
-export const workouts = pgTable('workouts', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  userId: text('user_id').notNull(),
-  name: text('name'),
-  notes: text('notes'),
-  startedAt: timestamp('started_at').notNull(),
-  finishedAt: timestamp('finished_at'),
-  createdAt: timestamp('created_at').notNull().defaultNow(),
-});
+export const workouts = pgTable(
+  'workouts',
+  {
+    id: uuid('id').primaryKey().defaultRandom(),
+    userId: text('user_id').notNull(),
+    name: text('name'),
+    notes: text('notes'),
+    startedAt: timestamp('started_at').notNull(),
+    finishedAt: timestamp('finished_at'),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+  },
+  (table) => [index('workouts_user_id_idx').on(table.userId)],
+);
 
 export const workoutExercises = pgTable('workout_exercises', {
   id: uuid('id').primaryKey().defaultRandom(),
@@ -75,7 +80,6 @@ export const sets = pgTable('sets', {
   notes: text('notes'),
   createdAt: timestamp('created_at').notNull().defaultNow(),
 });
-
 
 export const setsRelations = relations(sets, ({ one }) => ({
   workoutExercise: one(workoutExercises, {
